@@ -20,12 +20,23 @@
 </template>
 
 <script>
+const { EchoRequest } = require('../protobuf/service/test_a/test_a_pb.js')
+const { GreeterPromiseClient } = require('../protobuf/service/test_a/test_a_grpc_web_pb')
+
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted() {
+    const client = new GreeterPromiseClient('http://localhost:8080')
+    const request = new EchoRequest()
+    request.setMessage('Vue')
+    client.echo(request, {}).then((response, error) => {
+      console.log(response.getMeta().getMessage())
+    })
   }
 }
 </script>
