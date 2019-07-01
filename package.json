@@ -10,6 +10,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "google-protobuf": "^3.9.0-rc.1",
+    "grpc-web": "^1.0.4",
     "vue": "^2.5.11"
   },
   "browserslist": [
